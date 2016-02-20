@@ -1,0 +1,20 @@
+{
+	"name" : "sileence/composer",
+	"description": "tarea POP",
+	"type": "project",
+	"authors": [
+		{
+			"name" : "Kuai-mare"
+		}
+	],
+	"require":{
+		"php": ">=5.3.0",
+		"dompdf/dompdf": "dev-master"
+	},
+	"autoload":{
+		"psr-4":{
+			"App\\" : "pop/"
+		}
+	} 
+
+}
