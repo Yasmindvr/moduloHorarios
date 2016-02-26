@@ -14,8 +14,11 @@ while($registro=pg_fetch_array($resultado))
 	}
 }
 
-$query1 = "INSERT INTO salones VALUES (nextval('salones_id_seq'::regclass), '$nombre','$edificio','$tipo')";
+$query1 = "INSERT INTO salones (id, salon , cod_edif, tipo) VALUES (nextval('salones_id_seq'::regclass), '$nombre','$edificio','$tipo')";
+
+print_r ($query1);
 $resultado = pg_query($conexion, $query1);
+print_r($resultado);
 echo "Datos agregados correctamente&&success";
 
 ?>

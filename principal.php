@@ -1,6 +1,7 @@
 <?php
 	require "../script/verifSesion.php";
 	require "kuai/head.php";
+	$yasmin="soy yo";
 ?>
 <div >
 
@@ -34,6 +35,20 @@
 			</div>
 		</div>
     
+		<div id ="tab">
+		    <input type="radio" id="tab-3" name="group-1"checked>
+		    <label id="label"  for="tab-3">Horarios Docente </label>
+		    <div id="contenido">
+		    <!--contenido de la pestaña 2-->
+			    <div >
+					<?php
+						require_once("kuai/docente.php");
+					?>
+				</div>
+			</div>
+		</div>
+    
+
 	    <!-- pestaña 2-->
 		<div id="layer" <?php  echo $edi; ?>>
 		    <div id ="tab">

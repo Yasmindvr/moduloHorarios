@@ -2,7 +2,7 @@
 
 function Imp(){
 	
-  var objeto=document.getElementById('imprimeme');  //obtenemos el objeto a imprimir
+  var objeto=document.getElementById('impreporte');  //obtenemos el objeto a imprimir
   var ventana=window.open('','_blank');  //abrimos una ventana vacía nueva
   ventana.document.write(objeto.innerHTML);  //imprimimos el HTML del objeto en la nueva ventana
   ventana.document.close();  //cerramos el documento
@@ -39,7 +39,9 @@ function SeleccionaSalon() {
 function SeleccionaCarrera() {
     alert ("Debe seleccionar una Carrera");
 }
-
+function Seleccionaprof() {
+    alert ("Debe seleccionar un Profesor");
+}
 function ocultar()
 {
 	document.getElementById('oculto').style.display = 'none';
@@ -58,10 +60,25 @@ function consultaProfesor(tipo, id) {
         url: "reportehorario.php",
         data: {tipo: tipo, ide: ide},	
     success: function(a) {
-                $('#impreporte').html(a);
+                $('#impreporte').html('<div> <img src="encabezado.png" id="encabezado"> </div>'+a);
 	    }
       });
 }
+
+function consultaProfesorHora(tipo, id) {
+	alert(tipo);
+	var ide= document.getElementById(id).value;
+    $.ajax({
+        type: "POST",
+        url: "docente.php",
+        data: {tipo: tipo, ide: ide},	
+    success: function(a) {
+                $('#impreporte2').html('<div> <img src="encabezado.png" id="encabezado"> </div>'+a);
+	    }
+      });
+}
+
+
 function validaHorario() {
 	
 	var dia= document.getElementById('dia').value;
@@ -189,7 +206,7 @@ function cargaContenido(idSelectOrigen){
 	// Obtengo la opcion que el usuario selecciono
 	var opcionSeleccionada=selectOrigen.options[selectOrigen.selectedIndex].value;
 	// Si el usuario eligio la opcion "Elige", no voy al servidor y pongo los selects siguientes en estado "Selecciona opcion..."
-
+	alert (idSelectOrigen);
 	if(idSelectOrigen=="select1" ){
 		selectActual = null;
 		// Buscamos el ultimo select y cambiamos el estado y deshabilito
@@ -303,6 +320,7 @@ function cargaContenidoP(idSelectOrigen){
 	}
 }
 function cargaContenidoProf(idSelectOrigen){
+	alert('estas entrando yasmin :P');
 	// Obtengo la posicion que ocupa el select que debe ser cargado en el array declarado mas arriba
 	var posicionSelectDestino=buscarEnArray(listadoSelects, idSelectOrigen)+1;
 	// Obtengo el select que el usuario modifico
@@ -310,8 +328,7 @@ function cargaContenidoProf(idSelectOrigen){
 	// Obtengo la opcion que el usuario selecciono
 	var opcionSeleccionada=selectOrigen.options[selectOrigen.selectedIndex].value;
 	// Si el usuario eligio la opcion "Elige", no voy al servidor y pongo los selects siguientes en estado "Selecciona opcion..."
-
-	if(idSelectOrigen=="select1" ){
+	if(idSelectOrigen=="selectedif" ){
 		selectActual = null;
 		// Buscamos el ultimo select y cambiamos el estado y deshabilito
 		selectActual=document.getElementById(listadoSelects[1]);
@@ -344,7 +361,8 @@ function cargaContenidoProf(idSelectOrigen){
 		var selectDestino=document.getElementById(idSelectDestino);
 		// Creo el nuevo objeto AJAX y envio al servidor el ID del select a cargar y la opcion seleccionada del select origen
 		var ajax=nuevoAjax();
-		ajax.open("GET", "consulta/dinamico/selectreporte.php?select="+idSelectDestino+"&salon="+opcionSeleccionada, true);
+		alert(idSelectDestino,opcionSeleccionada);
+		ajax.open("GET", "consulta/dinamico/selectsalonprofe.php?select="+idSelectDestino+"&salon1="+opcionSeleccionada, true);
 		ajax.onreadystatechange=function() 
 		{ 
 			if (ajax.readyState==1){
@@ -362,6 +380,7 @@ function cargaContenidoProf(idSelectOrigen){
 		ajax.send(null);
 	}
 }
+
 function cargaContenidoM(idSelectOrigen){
 
 	

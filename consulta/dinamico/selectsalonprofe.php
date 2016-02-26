@@ -1,7 +1,8 @@
 <?php
 // Array que vincula los IDs de los selects declarados en el HTML con el nombre de la tabla donde se encuentra su contenido
-$listadoSelects = array("edificio" => "edificio", "salon" => "salones", );
+$listadoSelects = array("edificio1" => "edificio1", "salon1" => "salones1", );
 
+echo ('hola yasmin paso por aqui');
 function validaSelect($selectDestino){
 	// Se valida que el select enviado via GET exista
 	global $listadoSelects;
@@ -15,8 +16,8 @@ function validaOpcion($opcionSeleccionada){
 	else return false;
 }
 
-$selectDestino		= $_GET["select"];
-$opcionSeleccionada = $_GET["salon"];
+$selectDestino		= $_GET["salonprof"];
+$opcionSeleccionada = $_GET["selectprof"];
 
 if(validaSelect($selectDestino) && validaOpcion($opcionSeleccionada)){
 	$tabla		 = $listadoSelects[$selectDestino];
@@ -28,7 +29,7 @@ if(validaSelect($selectDestino) && validaOpcion($opcionSeleccionada)){
 	// Comienzo a imprimir el select
 	?>
 		<label>Salon</label>
-		<select id="<?php echo $selectDestino;?>" name="<?php echo $selectDestino;?>" onChange='cargaContenido(this.id)'>
+		<select id="<?php echo $selectDestino;?>" name="<?php echo $selectDestino;?>" onChange='cargaContenidoprof(this.id)'>
 		<option value='0'>Seleccione una opci&oacute;n</option>
 	<?php
 	while($registro=pg_fetch_array($consulta)){
@@ -41,5 +42,3 @@ if(validaSelect($selectDestino) && validaOpcion($opcionSeleccionada)){
 	echo "<div align='right' style='margin-top:5px'><input class='btn btn-primary btn-xs' type='submit' value='Consultar Salon'></div>";
 }
 ?>
-
-
