@@ -60,7 +60,7 @@ function consultaProfesor(tipo, id) {
         url: "reportehorario.php",
         data: {tipo: tipo, ide: ide},	
     success: function(a) {
-                $('#impreporte').html('<div> <img src="encabezado.png" id="encabezado"> </div>'+a);
+                $('#impreporte').html('<div> <img src="banner.jpg" id="encabezado"> </div>'+a);
 	    }
       });
 }
@@ -206,7 +206,6 @@ function cargaContenido(idSelectOrigen){
 	// Obtengo la opcion que el usuario selecciono
 	var opcionSeleccionada=selectOrigen.options[selectOrigen.selectedIndex].value;
 	// Si el usuario eligio la opcion "Elige", no voy al servidor y pongo los selects siguientes en estado "Selecciona opcion..."
-	alert (idSelectOrigen);
 	if(idSelectOrigen=="select1" ){
 		selectActual = null;
 		// Buscamos el ultimo select y cambiamos el estado y deshabilito
@@ -320,7 +319,6 @@ function cargaContenidoP(idSelectOrigen){
 	}
 }
 function cargaContenidoProf(idSelectOrigen){
-	alert('estas entrando yasmin :P');
 	// Obtengo la posicion que ocupa el select que debe ser cargado en el array declarado mas arriba
 	var posicionSelectDestino=buscarEnArray(listadoSelects, idSelectOrigen)+1;
 	// Obtengo el select que el usuario modifico

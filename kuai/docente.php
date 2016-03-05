@@ -164,7 +164,7 @@
             </thead>
             <tbody>
             <?php 
-                if (isset($select1)) {
+                if (isset($salonprof)) {
                     $queryHo = "SELECT * FROM horario a 
                     INNER JOIN \"unidadCurricular\" b ON a.materia = b.id
                     INNER JOIN persona c ON c.cedula = a.profesor
@@ -181,7 +181,7 @@
                     }
                     
                 }
-             if (!isset($select1) && empty($_GET)) {
+             if (!isset($salonprof) && empty($_GET)) {
            
                
                     $valisalon="onclick='SeleccionaSalon()'";
